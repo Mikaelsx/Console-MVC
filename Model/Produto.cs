@@ -61,6 +61,16 @@ namespace ConsoleMVC.Model
         }
 
         //métdo para declarar as linhas para serem inseridas no csv
+        public string PrepararLinhasCSV(Produto p)
+        {
+            return $"{p.Codigo};{p.Nome};{p.Preco}";
+        }
 
+        public void Inserir(Produto p)
+        {
+            string[] linhas = {PrepararLinhasCSV(p)};
+
+            File.AppendAllLines(PATH, linhas);
+        }
     }
 }
